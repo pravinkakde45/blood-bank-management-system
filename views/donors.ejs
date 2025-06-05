@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blood Bank - Donors</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <form action="/search" method="GET" style="margin-bottom: 20px;">
+  <input type="text" name="blood_group" placeholder="Enter blood group (e.g., O+)" required>
+  <button type="submit">Search</button>
+</form>
+    <h1>List of Donors</h1>
+    <ul>
+      <% donors.forEach(donor => { %>
+        <li><strong><%= donor.name %></strong> - <%= donor.blood_group %> - <%= donor.contact %>
+        <a href="/delete/<%= donor.id %>" style="color: red;">Delete</a>
+      </li>
+      <% }); %>
+
+    </ul>
+    <a href="/">← Go Back</a>
+  </div>
+  <%- include('partials/footer') %>
+</body>
+</html>
